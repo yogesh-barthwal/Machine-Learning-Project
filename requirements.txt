@@ -2,4 +2,5 @@ numpy
 pandas
 seaborn
 scikit_learn
--e .
+jupyter
+# -e .
