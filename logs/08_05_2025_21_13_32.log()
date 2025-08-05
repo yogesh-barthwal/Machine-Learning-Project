@@ -1,0 +1,11 @@
+[2025-08-05 21:13:36,273] 27 root - INFO - Entered the data ingestion component
+[2025-08-05 21:13:36,308] 30 root - INFO - Read data as a dataframe
+[2025-08-05 21:13:36,349] 36 root - INFO - Train and test data split initiated
+[2025-08-05 21:13:36,406] 41 root - INFO - Data ingestion completed
+[2025-08-05 21:13:36,412] 80 root - INFO - Train and Test data read
+[2025-08-05 21:13:36,412] 81 root - INFO - Obtaining preprocessing object
+[2025-08-05 21:13:36,413] 52 root - INFO - Log Transformation performed for skewed features
+[2025-08-05 21:13:36,413] 67 root - INFO - 'fixed acidity', 'free sulfur dioxide' dropped owing to multi collinearity
+[2025-08-05 21:13:36,419] 93 root - INFO - Applying preprocessing on train and test dataframe
+[2025-08-05 21:13:36,449] 101 root - INFO - Saving preprocessing object
+[2025-08-05 21:13:36,456] 19 root - INFO - Object successfuly saved at artifacts\preprocessor.pkl

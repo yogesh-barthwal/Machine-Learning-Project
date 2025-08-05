@@ -1,0 +1,24 @@
+[2025-08-05 21:25:49,254] 27 root - INFO - Entered the data ingestion component
+[2025-08-05 21:25:49,259] 30 root - INFO - Read data as a dataframe
+[2025-08-05 21:25:49,281] 36 root - INFO - Train and test data split initiated
+[2025-08-05 21:25:49,310] 41 root - INFO - Data ingestion completed
+[2025-08-05 21:25:49,317] 80 root - INFO - Train and Test data read
+[2025-08-05 21:25:49,317] 81 root - INFO - Obtaining preprocessing object
+[2025-08-05 21:25:49,317] 52 root - INFO - Log Transformation performed for skewed features
+[2025-08-05 21:25:49,317] 67 root - INFO - 'fixed acidity', 'free sulfur dioxide' dropped owing to multi collinearity
+[2025-08-05 21:25:49,319] 93 root - INFO - Applying preprocessing on train and test dataframe
+[2025-08-05 21:25:49,339] 101 root - INFO - Saving preprocessing object
+[2025-08-05 21:25:49,346] 19 root - INFO - Object successfuly saved at artifacts\preprocessor.pkl
+[2025-08-05 21:25:49,346] 33 root - INFO - Splitting train and test input data
+[2025-08-05 21:25:49,347] 36 root - INFO - Training Model LogisticRegression()
+[2025-08-05 21:25:49,393] 43 root - INFO - Logistic Regression--> Accuracy: 0.578125, F1-macro: 0.28876100751100753, F1-weighted: 0.5545299752331003
+[2025-08-05 21:25:49,395] 36 root - INFO - Training Model DecisionTreeClassifier(max_depth=4, random_state=42)
+[2025-08-05 21:25:49,410] 43 root - INFO - Decision Tree--> Accuracy: 0.534375, F1-macro: 0.2361299582012655, F1-weighted: 0.49856207153533133
+[2025-08-05 21:25:49,411] 36 root - INFO - Training Model RandomForestClassifier(random_state=42)
+[2025-08-05 21:25:49,770] 43 root - INFO - Random Forest--> Accuracy: 0.6625, F1-macro: 0.3234234234234234, F1-weighted: 0.6438626126126126
+[2025-08-05 21:25:49,772] 36 root - INFO - Training Model KNeighborsClassifier(n_neighbors=3)
+[2025-08-05 21:25:49,788] 43 root - INFO - K Nearest Neighbours--> Accuracy: 0.540625, F1-macro: 0.2981442493268607, F1-weighted: 0.53989326922846
+[2025-08-05 21:25:49,789] 36 root - INFO - Training Model GaussianNB()
+[2025-08-05 21:25:49,793] 43 root - INFO - Naive Bayes--> Accuracy: 0.55, F1-macro: 0.3249260630275966, F1-weighted: 0.5399222927316528
+[2025-08-05 21:25:49,794] 36 root - INFO - Training Model SVC(random_state=42)
+[2025-08-05 21:25:49,877] 43 root - INFO - Support Vector Machine--> Accuracy: 0.60625, F1-macro: 0.2738151021365893, F1-weighted: 0.5779627137336267

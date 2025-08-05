@@ -1,0 +1,14 @@
+[2025-08-05 21:18:01,266] 27 root - INFO - Entered the data ingestion component
+[2025-08-05 21:18:01,270] 30 root - INFO - Read data as a dataframe
+[2025-08-05 21:18:01,292] 36 root - INFO - Train and test data split initiated
+[2025-08-05 21:18:01,333] 41 root - INFO - Data ingestion completed
+[2025-08-05 21:18:01,339] 80 root - INFO - Train and Test data read
+[2025-08-05 21:18:01,339] 81 root - INFO - Obtaining preprocessing object
+[2025-08-05 21:18:01,339] 52 root - INFO - Log Transformation performed for skewed features
+[2025-08-05 21:18:01,339] 67 root - INFO - 'fixed acidity', 'free sulfur dioxide' dropped owing to multi collinearity
+[2025-08-05 21:18:01,340] 93 root - INFO - Applying preprocessing on train and test dataframe
+[2025-08-05 21:18:01,354] 101 root - INFO - Saving preprocessing object
+[2025-08-05 21:18:01,364] 19 root - INFO - Object successfuly saved at artifacts\preprocessor.pkl
+[2025-08-05 21:18:01,364] 33 root - INFO - Splitting train and test input data
+[2025-08-05 21:18:01,540] 36 root - INFO - Training Model LogisticRegression(solver='liblinear')
+[2025-08-05 21:18:01,608] 43 root - INFO - Logistic Regression--> Accuracy: 0.56875, F1-macro: 0.22695243028576362, F1-weighted: 0.5249203250453249
