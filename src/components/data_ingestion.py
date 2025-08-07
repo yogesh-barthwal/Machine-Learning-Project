@@ -18,7 +18,7 @@ class DataIngestionConfig:
     train_data_path : str= os.path.join('artifacts', 'train.csv')
     test_data_path : str= os.path.join('artifacts', 'test.csv')
     raw_data_path : str= os.path.join('artifacts', 'raw.csv')
-
+    raw_csv_path: str = os.path.join('notebooks', 'data', 'QualityPrediction.csv')
 class DataIngestion:
     def __init__(self):
         self. ingestion_config= DataIngestionConfig()
@@ -26,7 +26,7 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info('Entered the data ingestion component')
         try:
-            df= pd.read_csv(r'notebooks\data\QualityPrediction.csv')
+            df = pd.read_csv(self.ingestion_config.raw_csv_path)
             logging.info('Read data as a dataframe')
             
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True)
@@ -55,6 +55,6 @@ if __name__== '__main__':
     train_arr, test_arr, _= data_transformation.initiate_data_transformation(train_data,test_data)
 
     model_trainer= ModelTrainer()
-    print(model_trainer.initiate_model_trainer(train_arr, test_arr))
-
+    final_score = model_trainer.initiate_model_trainer(train_arr, test_arr)
+    logging.info(f"Model Training F1 Score: {model_trainer.initiate_model_trainer(train_arr, test_arr)}")
 

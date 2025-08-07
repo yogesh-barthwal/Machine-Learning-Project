@@ -23,6 +23,47 @@ def save_object(file_path, obj):
         raise CustomException(e,sys)
     
 
+param_grids = {
+    'Logistic Regression': {
+        'C': [0.01, 0.1, 1, 10],
+        'solver': ['lbfgs'],
+        'penalty': ['l2'],
+        'max_iter': [1000,1500,2000],
+    },
+
+    'Decision Tree': {
+        'max_depth': [3, 5, 10, None],
+        'criterion': ['gini', 'entropy'],
+        'min_samples_split': [2, 5, 10]
+    },
+
+    'Random Forest': {
+        'n_estimators': [50, 100, 200],
+        'max_depth': [None, 10, 20],
+        'min_samples_split': [2, 5],
+        'bootstrap': [True, False]
+    },
+
+    'K Nearest Neighbours': {
+        'n_neighbors': [3, 5, 7],
+        'weights': ['uniform', 'distance'],
+        'metric': ['euclidean', 'manhattan']
+    },
+
+    'Naive Bayes': {
+        # GaussianNB has very few tunable parameters
+        'var_smoothing': [1e-09, 1e-08, 1e-07]
+    },
+
+    'Support Vector Machine': {
+        'C': [0.1, 1, 10],
+        'kernel': ['linear', 'rbf'],
+        'gamma': ['scale', 'auto']
+    }
+}
+
+    
+
 
 def evaluate_models(x_train, y_train, x_test, y_test, models)-> pd.DataFrame:
 
@@ -30,28 +71,60 @@ def evaluate_models(x_train, y_train, x_test, y_test, models)-> pd.DataFrame:
     Fit each model and evaluate on test set. Returns a DataFrame with accuracy and macro/weighted F1.
 
     """
+    results= []
     try:
-        results= []
+        trained_models = {}
+
         for name,model in models.items():
-            logging.info(f"Training Model {model}")
-            model.fit(x_train,y_train)
-            y_pred= model.predict(x_test)
-            acc= accuracy_score(y_test,y_pred)
-            f1_macro= f1_score(y_test, y_pred,average='macro')
-            f1_weighted= f1_score(y_test, y_pred,average='weighted')
 
-            logging.info(f"{name}--> Accuracy: {acc}, F1-macro: {f1_macro}, F1-weighted: {f1_weighted}")
+            try:
+                logging.info(f"Training Model {model}")
 
-            results.append({
-                "Model" : name,
-                "Accuracy": round(acc,3),
-                "F1-macro": round(f1_macro,3),
-                "F1-weighted": round(f1_weighted,3),
-            })
+                if name in param_grids:
+                    logging.info(f"Hyperparameter tuning for {name}")
+                    grid_search= GridSearchCV(model,param_grids[name],cv=3,n_jobs=1,scoring='f1_weighted')
+                    grid_search.fit(x_train, y_train)
+                    best_model= grid_search.best_estimator_
+                    logging.info(f"Best params for{name}:{grid_search.best_params_}")
 
-            df= pd.DataFrame(results).sort_values(by="Accuracy", ascending= False).reset_index(drop=True)
-        return df
+                else:
+                    model.fit(x_train,y_train)
+                    best_model= model
+
+                trained_models[name] = best_model
+
+                y_pred= best_model.predict(x_test)
+
+                acc= accuracy_score(y_test,y_pred)
+                f1_macro= f1_score(y_test, y_pred,average='macro')
+                f1_weighted= f1_score(y_test, y_pred,average='weighted')
+
+                logging.info(f"{name}--> Accuracy: {acc}, F1-macro: {f1_macro}, F1-weighted: {f1_weighted}")
+
+                results.append({
+                    "Model" : name,
+                    "Accuracy": round(acc,3),
+                    "F1-macro": round(f1_macro,3),
+                    "F1-weighted": round(f1_weighted,3),
+                    "Best_Estimator" :best_model,
+                })
+
+            except Exception as model_err:
+                logging.error(f"Failed to evaluate model {name}: {model_err}", exc_info=True)
+
+
+
+        df= pd.DataFrame(results).sort_values(by="F1-weighted", ascending= False).reset_index(drop=True)
+        best_model_object = df.loc[0, "Best_Estimator"]
     
+
+        return best_model_object, df
+
+        
+            
+            
+        
     except Exception as e:
         logging.error(f"Error in evaluate_models: {e}", exc_info=True)
         raise CustomException(e,sys)
+        

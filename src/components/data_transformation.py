@@ -2,7 +2,7 @@ import sys, os
 from dataclasses import dataclass
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.preprocessing import StandardScaler
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline, FunctionTransformer
@@ -64,6 +64,9 @@ class DataTransformation:
                 ],
                 remainder= 'drop'
             )
+
+            preprocessor.set_output(transform='pandas')
+            
             logging.info("'fixed acidity', 'free sulfur dioxide' dropped owing to multi collinearity")
 
 

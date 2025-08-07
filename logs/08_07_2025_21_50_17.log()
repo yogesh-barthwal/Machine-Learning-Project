@@ -1,0 +1,66 @@
+[2025-08-07 21:50:19,094] 27 root - INFO - Entered the data ingestion component
+[2025-08-07 21:50:19,101] 30 root - INFO - Read data as a dataframe
+[2025-08-07 21:50:19,125] 36 root - INFO - Train and test data split initiated
+[2025-08-07 21:50:19,151] 41 root - INFO - Data ingestion completed
+[2025-08-07 21:50:19,156] 80 root - INFO - Train and Test data read
+[2025-08-07 21:50:19,156] 81 root - INFO - Obtaining preprocessing object
+[2025-08-07 21:50:19,156] 52 root - INFO - Log Transformation performed for skewed features
+[2025-08-07 21:50:19,157] 67 root - INFO - 'fixed acidity', 'free sulfur dioxide' dropped owing to multi collinearity
+[2025-08-07 21:50:19,158] 93 root - INFO - Applying preprocessing on train and test dataframe
+[2025-08-07 21:50:19,174] 101 root - INFO - Saving preprocessing object
+[2025-08-07 21:50:19,181] 19 root - INFO - Object successfuly saved at artifacts\preprocessor.pkl
+[2025-08-07 21:50:19,181] 28 root - INFO - Splitting train and test input data
+[2025-08-07 21:50:19,184] 81 root - INFO - Training Model LogisticRegression(max_iter=1000, multi_class='multinomial', random_state=42)
+[2025-08-07 21:50:19,184] 84 root - INFO - Hyperparameter tuning for Logistic Regression
+[2025-08-07 21:50:20,574] 88 root - INFO - Best params forLogistic Regression:{'C': 10, 'max_iter': 500, 'penalty': 'l2', 'solver': 'lbfgs'}
+[2025-08-07 21:50:20,578] 102 root - INFO - Logistic Regression--> Accuracy: 0.578125, F1-macro: 0.28876100751100753, F1-weighted: 0.5545299752331003
+[2025-08-07 21:50:20,578] 81 root - INFO - Training Model DecisionTreeClassifier(max_depth=4, random_state=42)
+[2025-08-07 21:50:20,578] 84 root - INFO - Hyperparameter tuning for Decision Tree
+[2025-08-07 21:50:21,269] 88 root - INFO - Best params forDecision Tree:{'criterion': 'gini', 'max_depth': 10, 'min_samples_split': 2}
+[2025-08-07 21:50:21,277] 102 root - INFO - Decision Tree--> Accuracy: 0.571875, F1-macro: 0.28791941701309204, F1-weighted: 0.5590444435502573
+[2025-08-07 21:50:21,278] 81 root - INFO - Training Model RandomForestClassifier(random_state=42)
+[2025-08-07 21:50:21,278] 84 root - INFO - Hyperparameter tuning for Random Forest
+[2025-08-07 21:51:08,567] 88 root - INFO - Best params forRandom Forest:{'bootstrap': True, 'max_depth': None, 'min_samples_split': 5, 'n_estimators': 200}
+[2025-08-07 21:51:08,654] 102 root - INFO - Random Forest--> Accuracy: 0.678125, F1-macro: 0.33676998251023244, F1-weighted: 0.6601034510737275
+[2025-08-07 21:51:08,656] 81 root - INFO - Training Model KNeighborsClassifier(n_neighbors=3)
+[2025-08-07 21:51:08,656] 84 root - INFO - Hyperparameter tuning for K Nearest Neighbours
+[2025-08-07 21:51:09,815] 88 root - INFO - Best params forK Nearest Neighbours:{'metric': 'manhattan', 'n_neighbors': 7, 'weights': 'distance'}
+[2025-08-07 21:51:09,850] 102 root - INFO - K Nearest Neighbours--> Accuracy: 0.64375, F1-macro: 0.32764252967205, F1-weighted: 0.6323573605054232
+[2025-08-07 21:51:09,850] 81 root - INFO - Training Model GaussianNB()
+[2025-08-07 21:51:09,850] 84 root - INFO - Hyperparameter tuning for Naive Bayes
+[2025-08-07 21:51:09,968] 88 root - INFO - Best params forNaive Bayes:{'var_smoothing': 1e-09}
+[2025-08-07 21:51:09,981] 102 root - INFO - Naive Bayes--> Accuracy: 0.55, F1-macro: 0.3249260630275966, F1-weighted: 0.5399222927316528
+[2025-08-07 21:51:09,981] 81 root - INFO - Training Model SVC(random_state=42)
+[2025-08-07 21:51:09,981] 84 root - INFO - Hyperparameter tuning for Support Vector Machine
+[2025-08-07 21:51:18,498] 88 root - INFO - Best params forSupport Vector Machine:{'C': 10, 'gamma': 'scale', 'kernel': 'rbf'}
+[2025-08-07 21:51:18,583] 102 root - INFO - Support Vector Machine--> Accuracy: 0.61875, F1-macro: 0.3212040853169886, F1-weighted: 0.6060640529642546
+[2025-08-07 21:51:18,587] 54 root - INFO - Best model identified. Saving to disk
+[2025-08-07 21:51:18,667] 19 root - INFO - Object successfuly saved at artifacts\model.pkl
+[2025-08-07 21:51:18,743] 28 root - INFO - Splitting train and test input data
+[2025-08-07 21:51:18,744] 81 root - INFO - Training Model LogisticRegression(max_iter=1000, multi_class='multinomial', random_state=42)
+[2025-08-07 21:51:18,744] 84 root - INFO - Hyperparameter tuning for Logistic Regression
+[2025-08-07 21:51:22,731] 88 root - INFO - Best params forLogistic Regression:{'C': 10, 'max_iter': 500, 'penalty': 'l2', 'solver': 'lbfgs'}
+[2025-08-07 21:51:22,746] 102 root - INFO - Logistic Regression--> Accuracy: 0.578125, F1-macro: 0.28876100751100753, F1-weighted: 0.5545299752331003
+[2025-08-07 21:51:22,747] 81 root - INFO - Training Model DecisionTreeClassifier(max_depth=4, random_state=42)
+[2025-08-07 21:51:22,747] 84 root - INFO - Hyperparameter tuning for Decision Tree
+[2025-08-07 21:51:25,039] 88 root - INFO - Best params forDecision Tree:{'criterion': 'gini', 'max_depth': 10, 'min_samples_split': 2}
+[2025-08-07 21:51:25,051] 102 root - INFO - Decision Tree--> Accuracy: 0.571875, F1-macro: 0.28791941701309204, F1-weighted: 0.5590444435502573
+[2025-08-07 21:51:25,052] 81 root - INFO - Training Model RandomForestClassifier(random_state=42)
+[2025-08-07 21:51:25,052] 84 root - INFO - Hyperparameter tuning for Random Forest
+[2025-08-07 21:52:07,326] 88 root - INFO - Best params forRandom Forest:{'bootstrap': True, 'max_depth': None, 'min_samples_split': 5, 'n_estimators': 200}
+[2025-08-07 21:52:07,345] 102 root - INFO - Random Forest--> Accuracy: 0.678125, F1-macro: 0.33676998251023244, F1-weighted: 0.6601034510737275
+[2025-08-07 21:52:07,345] 81 root - INFO - Training Model KNeighborsClassifier(n_neighbors=3)
+[2025-08-07 21:52:07,345] 84 root - INFO - Hyperparameter tuning for K Nearest Neighbours
+[2025-08-07 21:52:07,811] 88 root - INFO - Best params forK Nearest Neighbours:{'metric': 'manhattan', 'n_neighbors': 7, 'weights': 'distance'}
+[2025-08-07 21:52:07,835] 102 root - INFO - K Nearest Neighbours--> Accuracy: 0.64375, F1-macro: 0.32764252967205, F1-weighted: 0.6323573605054232
+[2025-08-07 21:52:07,835] 81 root - INFO - Training Model GaussianNB()
+[2025-08-07 21:52:07,835] 84 root - INFO - Hyperparameter tuning for Naive Bayes
+[2025-08-07 21:52:07,873] 88 root - INFO - Best params forNaive Bayes:{'var_smoothing': 1e-09}
+[2025-08-07 21:52:07,876] 102 root - INFO - Naive Bayes--> Accuracy: 0.55, F1-macro: 0.3249260630275966, F1-weighted: 0.5399222927316528
+[2025-08-07 21:52:07,877] 81 root - INFO - Training Model SVC(random_state=42)
+[2025-08-07 21:52:07,877] 84 root - INFO - Hyperparameter tuning for Support Vector Machine
+[2025-08-07 21:52:10,321] 88 root - INFO - Best params forSupport Vector Machine:{'C': 10, 'gamma': 'scale', 'kernel': 'rbf'}
+[2025-08-07 21:52:10,348] 102 root - INFO - Support Vector Machine--> Accuracy: 0.61875, F1-macro: 0.3212040853169886, F1-weighted: 0.6060640529642546
+[2025-08-07 21:52:10,349] 54 root - INFO - Best model identified. Saving to disk
+[2025-08-07 21:52:10,369] 19 root - INFO - Object successfuly saved at artifacts\model.pkl
+[2025-08-07 21:52:10,391] 59 root - INFO - Model Training F1 Score: 0.6601034510737275
